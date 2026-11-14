@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT" pages="2">
+  <diagram name="ERD" id="erd-page">
+    <mxGraphModel dx="1407" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Rooms&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomID : INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomNumber : VARCHAR(10) (UNIQUE, NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomType : VARCHAR(30) (NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Floor : INT (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomStatus : VARCHAR(20) (DEFAULT &#39;Dirty&#39;)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="350" x="60" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Housekeepers&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;HousekeeperID : INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;FullName : VARCHAR(100) (NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Phone : VARCHAR(20) (UNIQUE)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Salary : DECIMAL(10,2) (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;HireDate : DATE (DEFAULT GETDATE())&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="270" x="520" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Tasks&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskID : INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskName : VARCHAR(50) (UNIQUE, NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Description : VARCHAR(200) (NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;EstimatedMinutes : INT (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Priority : VARCHAR(20) (DEFAULT &#39;Normal&#39;)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="330" x="980" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Schedules&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ScheduleID : INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomID : INT (FK → Rooms.RoomID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;HousekeeperID : INT (FK → Housekeepers.HousekeeperID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskID : INT (FK → Tasks.TaskID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ScheduledDate : DATE (NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Status : VARCHAR(20) (DEFAULT &#39;Pending&#39;)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="350" x="520" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Inspections&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;InspectionID : INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ScheduleID : INT (FK → Schedules.ScheduleID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;InspectionDate : DATE (DEFAULT GETDATE())&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Result : VARCHAR(20) (CHECK Passed/Failed)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Notes : VARCHAR(200) (NULL)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="310" x="980" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Supplies&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;SupplyID : INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;SupplyName : VARCHAR(100) (UNIQUE, NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Quantity : INT (CHECK &gt;= 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;UnitPrice : DECIMAL(10,2) (CHECK &gt;= 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ExpiryDate : DATE (NULL)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="350" x="20" y="675" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#1F4E79;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;TaskSupplies&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskID : INT (PK, FK → Tasks.TaskID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;SupplyID : INT (PK, FK → Supplies.SupplyID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;QuantityRequired : INT (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="300" x="520" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=12;labelBackgroundColor=#FFFFFF;entryX=-0.004;entryY=0.545;entryDx=0;entryDy=0;entryPerimeter=0;" value="1 : N  (RoomID)">
+          <mxGeometry relative="1" x="-0.3108" as="geometry">
+            <Array as="points">
+              <mxPoint x="231.4" y="508" />
+              <mxPoint x="511.4" y="508" />
+              <mxPoint x="511.4" y="509.9" />
+            </Array>
+            <mxPoint x="231.4" y="250" as="sourcePoint" />
+            <mxPoint x="520" y="509.9" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=12;labelBackgroundColor=#FFFFFF;" target="5" value="1 : N  (HousekeeperID)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="310" />
+              <mxPoint x="660" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=12;labelBackgroundColor=#FFFFFF;entryX=1.009;entryY=0.698;entryDx=0;entryDy=0;exitX=0.647;exitY=1.011;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" value="1 : N  (TaskID)">
+          <mxGeometry relative="1" x="-0.378" y="-2" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1192.1" y="252" />
+              <mxPoint x="1192.1" y="473.2" />
+            </Array>
+            <mxPoint x="1192.0099999999998" y="180" as="sourcePoint" />
+            <mxPoint x="869.9999999999999" y="473.20000000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=12;labelBackgroundColor=#FFFFFF;" target="6" value="1 : N  (ScheduleID)">
+          <mxGeometry relative="1" x="0.0023" as="geometry">
+            <Array as="points">
+              <mxPoint x="1155" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=12;labelBackgroundColor=#FFFFFF;entryX=1.008;entryY=0.58;entryDx=0;entryDy=0;entryPerimeter=0;" target="8" value="1 : N  (TaskID)">
+          <mxGeometry relative="1" x="0.8183" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="978.2" y="185" />
+              <mxPoint x="938.2" y="185" />
+              <mxPoint x="938.2" y="769.6" />
+            </Array>
+            <mxPoint x="978.2" y="181.2" as="sourcePoint" />
+            <mxPoint x="938.2" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" edge="1" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=12;labelBackgroundColor=#FFFFFF;" target="8" value="1 : N  (SupplyID)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5fyu8ADEoCU02BEYkICp-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;b style=&quot;font-family: Arial; font-size: 14px; color: rgb(180, 83, 9);&quot;&gt;Many-to-Many (M:N)&lt;/b&gt;&lt;br style=&quot;font-family: Arial; font-size: 14px;&quot;&gt;&lt;span style=&quot;font-family: Arial; font-size: 14px;&quot;&gt;Tasks ↔ Supplies&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="155" x="592.5" y="840" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Mapping Diagram" id="mapping-page">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Rooms&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomID INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomNumber VARCHAR(10) (UNIQUE, NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomType VARCHAR(30) (NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Floor INT (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomStatus VARCHAR(20) (DEFAULT &#39;Dirty&#39;)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="340" x="20" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Housekeepers&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;HousekeeperID INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;FullName VARCHAR(100) (NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Phone VARCHAR(20) (UNIQUE)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Salary DECIMAL(10,2) (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;HireDate DATE (DEFAULT GETDATE())&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="260" x="530" y="-10" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Tasks&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskID INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskName VARCHAR(50) (UNIQUE, NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Description VARCHAR(200) (NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;EstimatedMinutes INT (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Priority VARCHAR(20) (DEFAULT &#39;Normal&#39;)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="320" x="980" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Supplies&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;SupplyID INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;SupplyName VARCHAR(100) (UNIQUE, NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Quantity INT (CHECK &gt;= 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;UnitPrice DECIMAL(10,2) (CHECK &gt;= 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ExpiryDate DATE (NULL)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="340" x="30" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Schedules&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ScheduleID INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;RoomID INT (FK → Rooms.RoomID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;HousekeeperID INT (FK → Housekeepers.HousekeeperID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskID INT (FK → Tasks.TaskID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ScheduledDate DATE (NOT NULL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Status VARCHAR(20) (DEFAULT &#39;Pending&#39;)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="370" x="310" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;Inspections&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;InspectionID INT (PK, IDENTITY)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;ScheduleID INT (FK → Schedules.ScheduleID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;InspectionDate DATE (DEFAULT GETDATE())&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Result VARCHAR(20) (CHECK Passed/Failed)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;Notes VARCHAR(200) (NULL)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="310" x="1150" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#375623;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:14px;&quot;&gt;&lt;div style=&quot;background-color:#375623;color:#ffffff;padding:8px;font-weight:bold;text-align:center;&quot;&gt;TaskSupplies&lt;/div&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;TaskID INT (PK, FK → Tasks.TaskID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;SupplyID INT (PK, FK → Supplies.SupplyID)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;border:1px solid #999;padding:5px;&quot;&gt;QuantityRequired INT (CHECK &gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="290" x="655" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=11;labelBackgroundColor=#FFFFFF;" target="6" value="Housekeepers.HousekeeperID → Schedules.HousekeeperID (FK)">
+          <mxGeometry relative="1" x="0.0667" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="560" y="350" />
+              <mxPoint x="560" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=11;labelBackgroundColor=#FFFFFF;" target="6" value="Tasks.TaskID → Schedules.TaskID (FK)">
+          <mxGeometry relative="1" x="-0.2258" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="820" y="160" />
+              <mxPoint x="820" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" edge="1" parent="1" source="6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=11;labelBackgroundColor=#FFFFFF;" target="7" value="Schedules.ScheduleID → Inspections.ScheduleID (FK)">
+          <mxGeometry relative="1" x="0.4069" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1325" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=11;labelBackgroundColor=#FFFFFF;" value="Tasks.TaskID → TaskSupplies.TaskID (FK)">
+          <mxGeometry relative="1" x="-0.2082" as="geometry">
+            <Array as="points">
+              <mxPoint x="1115.8" y="250" />
+              <mxPoint x="1015" y="250" />
+              <mxPoint x="1015" y="790" />
+            </Array>
+            <mxPoint x="1025" y="250" as="sourcePoint" />
+            <mxPoint x="945" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#555555;fontSize=11;labelBackgroundColor=#FFFFFF;" target="8" value="Supplies.SupplyID → TaskSupplies.SupplyID (FK)">
+          <mxGeometry relative="1" x="-0.0877" y="20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="430" y="810" />
+              <mxPoint x="430" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oSsRzMd4688Q4QQK3MiF-27" edge="1" parent="1" source="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.636;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oSsRzMd4688Q4QQK3MiF-29" connectable="0" parent="oSsRzMd4688Q4QQK3MiF-27" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=fontFamily,fontSize,fontStyle,textOpacity,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;fontColor=default;labelBorderColor=none;textShadow=0;" value="Rooms.RoomID → Schedules.RoomID (FK)" vertex="1">
+          <mxGeometry relative="1" x="0.5687" y="-1" as="geometry">
+            <mxPoint x="-29" y="-81" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
